@@ -28,7 +28,7 @@ namespace memoryPool {
         int SlotSize_;          //槽大小
         Slot* firstBlock_;      //指向内存池管理的首个内存块
         Slot* curSlot_;         //指向当前未使用过的槽
-        Slot* freeSlot_;        //指向空闲的槽（使用后释放）
+        Slot* freeList_;        //指向空闲的槽（使用后释放）
         Slot* lastSlot_;        //超过该标识需申请新内存块
         std::mutex mutexForFreeList_;       //保证freeList_在多线程操作的原子性
         std::mutex mutexForBlock_;          //保证多线程情况下避免不必要重复开辟导致内存浪费行为
