@@ -4,4 +4,6 @@ project(memoryPool)
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(memoryPool memoryPool.cpp
-        memoryPool.h)
+        memoryPool.h
+        test.cpp
+)

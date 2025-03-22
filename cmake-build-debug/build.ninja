@@ -55,6 +55,12 @@ build CMakeFiles/memoryPool.dir/memoryPool.cpp.obj: CXX_COMPILER__memoryPool_uns
   OBJECT_DIR = CMakeFiles\memoryPool.dir
   OBJECT_FILE_DIR = CMakeFiles\memoryPool.dir
 
+build CMakeFiles/memoryPool.dir/test.cpp.obj: CXX_COMPILER__memoryPool_unscanned_Debug C$:/Code/clion/memoryPool/test.cpp || cmake_object_order_depends_target_memoryPool
+  DEP_FILE = CMakeFiles\memoryPool.dir\test.cpp.obj.d
+  FLAGS = -g -std=gnu++11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\memoryPool.dir
+  OBJECT_FILE_DIR = CMakeFiles\memoryPool.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target memoryPool
@@ -63,7 +69,7 @@ build CMakeFiles/memoryPool.dir/memoryPool.cpp.obj: CXX_COMPILER__memoryPool_uns
 #############################################
 # Link the executable memoryPool.exe
 
-build memoryPool.exe: CXX_EXECUTABLE_LINKER__memoryPool_Debug CMakeFiles/memoryPool.dir/memoryPool.cpp.obj
+build memoryPool.exe: CXX_EXECUTABLE_LINKER__memoryPool_Debug CMakeFiles/memoryPool.dir/memoryPool.cpp.obj CMakeFiles/memoryPool.dir/test.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\memoryPool.dir

@@ -1,9 +1,9 @@
 #include <mutex>
 
 namespace memoryPool {
-#define MEMORY_POOL_NUM 64
-#define SLOT_BASE_SIZE 8
-#define MAX_SLOT_SIZE 512
+#define MEMORY_POOL_NUM 64  //内存池数量
+#define SLOT_BASE_SIZE 8    //最小槽大小
+#define MAX_SLOT_SIZE 512   //最大槽大小
 
     struct Slot {
         Slot* next;
@@ -11,7 +11,7 @@ namespace memoryPool {
 
     class MemoryPool {
     public:
-        MemoryPool(size_t BlockSize = 4096);
+        MemoryPool(size_t BlockSize = 4096);    //默认内存块大小4096字节
         ~MemoryPool();
 
         void init(size_t);
@@ -39,15 +39,16 @@ namespace memoryPool {
         static void initMemoryPool();
         static MemoryPool& getMemoryPool(int index);
         static void* useMemory(size_t size) {
-            if(size<=0) return nullptr;
-            if(size>MAX_SLOT_SIZE) return operator new(size); //大于512字节的内存，通过new()申请
+            if(size <= 0) return nullptr;
+            if(size > MAX_SLOT_SIZE) return operator new(size); //大于512字节的内存，通过new()申请
 
-            return getMemoryPool(((size+7)/SLOT_BASE_SIZE)-1).allocate();
+            return getMemoryPool(((size+7)/SLOT_BASE_SIZE)-1).allocate();   //相当于size/8向上取整
         }
 
         static void freeMemory(void* ptr, size_t size) {
             if(!ptr) return;
-            if(size>MAX_SLOT_SIZE) {
+            //原理同前getMemoryPool()
+            if(size > MAX_SLOT_SIZE) {
                 operator delete(ptr);
                 return;
             }
@@ -64,6 +65,7 @@ namespace memoryPool {
     template<typename T, typename... Args>
     T* newElement(Args&&...args) {
         T* p=nullptr;
+        //根据元素的大小，在对应的内存池中分配内存
         if((p=reinterpret_cast<T*>(HashBucket::useMemory(sizeof(T))))!=nullptr) {
             new(p) T(std::forward<Args>(args)...);
         }
@@ -72,8 +74,10 @@ namespace memoryPool {
 
     template<typename T>
     void deleteElement(T* p) {
+        //对象析构
         if(p) {
             p->~T();
+            //回收内存
             HashBucket::freeMemory(reinterpret_cast<void*>(p),sizeof(T));
         }
     }
