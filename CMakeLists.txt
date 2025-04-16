@@ -3,7 +3,7 @@ project(memoryPool)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(memoryPool memoryPool.cpp
-        memoryPool.h
-        test.cpp
+add_executable(memoryPool Version1/memoryPool.cpp
+        Version1/memoryPool.h
+        Version1/test.cpp
 )
