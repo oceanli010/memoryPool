@@ -52,14 +52,37 @@ build cmake_object_order_depends_target_memoryPool: phony || .
 build CMakeFiles/memoryPool.dir/Version1/memoryPool.cpp.obj: CXX_COMPILER__memoryPool_unscanned_Debug C$:/Code/clion/memoryPool/Version1/memoryPool.cpp || cmake_object_order_depends_target_memoryPool
   DEP_FILE = CMakeFiles\memoryPool.dir\Version1\memoryPool.cpp.obj.d
   FLAGS = -g -std=gnu++11 -fdiagnostics-color=always
+  INCLUDES = -IC:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/x86_64-linux-gnu
   OBJECT_DIR = CMakeFiles\memoryPool.dir
   OBJECT_FILE_DIR = CMakeFiles\memoryPool.dir\Version1
 
 build CMakeFiles/memoryPool.dir/Version1/test.cpp.obj: CXX_COMPILER__memoryPool_unscanned_Debug C$:/Code/clion/memoryPool/Version1/test.cpp || cmake_object_order_depends_target_memoryPool
   DEP_FILE = CMakeFiles\memoryPool.dir\Version1\test.cpp.obj.d
   FLAGS = -g -std=gnu++11 -fdiagnostics-color=always
+  INCLUDES = -IC:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/x86_64-linux-gnu
   OBJECT_DIR = CMakeFiles\memoryPool.dir
   OBJECT_FILE_DIR = CMakeFiles\memoryPool.dir\Version1
+
+build CMakeFiles/memoryPool.dir/Version2/src/CentralCache.cpp.obj: CXX_COMPILER__memoryPool_unscanned_Debug C$:/Code/clion/memoryPool/Version2/src/CentralCache.cpp || cmake_object_order_depends_target_memoryPool
+  DEP_FILE = CMakeFiles\memoryPool.dir\Version2\src\CentralCache.cpp.obj.d
+  FLAGS = -g -std=gnu++11 -fdiagnostics-color=always
+  INCLUDES = -IC:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/x86_64-linux-gnu
+  OBJECT_DIR = CMakeFiles\memoryPool.dir
+  OBJECT_FILE_DIR = CMakeFiles\memoryPool.dir\Version2\src
+
+build CMakeFiles/memoryPool.dir/Version2/src/pageCache.cpp.obj: CXX_COMPILER__memoryPool_unscanned_Debug C$:/Code/clion/memoryPool/Version2/src/pageCache.cpp || cmake_object_order_depends_target_memoryPool
+  DEP_FILE = CMakeFiles\memoryPool.dir\Version2\src\pageCache.cpp.obj.d
+  FLAGS = -g -std=gnu++11 -fdiagnostics-color=always
+  INCLUDES = -IC:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/x86_64-linux-gnu
+  OBJECT_DIR = CMakeFiles\memoryPool.dir
+  OBJECT_FILE_DIR = CMakeFiles\memoryPool.dir\Version2\src
+
+build CMakeFiles/memoryPool.dir/Version2/src/ThreadCache.cpp.obj: CXX_COMPILER__memoryPool_unscanned_Debug C$:/Code/clion/memoryPool/Version2/src/ThreadCache.cpp || cmake_object_order_depends_target_memoryPool
+  DEP_FILE = CMakeFiles\memoryPool.dir\Version2\src\ThreadCache.cpp.obj.d
+  FLAGS = -g -std=gnu++11 -fdiagnostics-color=always
+  INCLUDES = -IC:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/x86_64-linux-gnu
+  OBJECT_DIR = CMakeFiles\memoryPool.dir
+  OBJECT_FILE_DIR = CMakeFiles\memoryPool.dir\Version2\src
 
 
 # =============================================================================
@@ -69,7 +92,7 @@ build CMakeFiles/memoryPool.dir/Version1/test.cpp.obj: CXX_COMPILER__memoryPool_
 #############################################
 # Link the executable memoryPool.exe
 
-build memoryPool.exe: CXX_EXECUTABLE_LINKER__memoryPool_Debug CMakeFiles/memoryPool.dir/Version1/memoryPool.cpp.obj CMakeFiles/memoryPool.dir/Version1/test.cpp.obj
+build memoryPool.exe: CXX_EXECUTABLE_LINKER__memoryPool_Debug CMakeFiles/memoryPool.dir/Version1/memoryPool.cpp.obj CMakeFiles/memoryPool.dir/Version1/test.cpp.obj CMakeFiles/memoryPool.dir/Version2/src/CentralCache.cpp.obj CMakeFiles/memoryPool.dir/Version2/src/pageCache.cpp.obj CMakeFiles/memoryPool.dir/Version2/src/ThreadCache.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\memoryPool.dir
