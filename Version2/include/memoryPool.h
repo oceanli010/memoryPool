@@ -1,7 +1,7 @@
 #pragma once
 #include "ThreadCache.h"
 
-namespace MemoryPool {
+namespace memoryPool {
 
 class MemoryPool {
 public:

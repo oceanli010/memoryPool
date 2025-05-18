@@ -75,6 +75,32 @@ namespace memoryPool {
 
         size_t batchNum=freeListSize_[index];
         if(batchNum<=1) return;
+
+        size_t keepNum = std::max(batchNum/4,size_t(1));
+        size_t returnNum = batchNum - keepNum;
+
+        char* current = static_cast<char*>(start);
+        char* splitNode = current;
+        for(size_t i = 0; i<keepNum - 1; ++i) {
+            splitNode = reinterpret_cast<char*>(*reinterpret_cast<void**>(splitNode));
+            if(splitNode == nullptr) {
+                returnNum = batchNum - (i + 1);
+                break;
+            }
+        }
+
+        if(splitNode != nullptr) {
+            void* nextNode = *reinterpret_cast<void**>(splitNode);
+            *reinterpret_cast<void**>(splitNode) = nullptr;
+
+            freeList_[index] = start;
+
+            freeListSize_[index] = keepNum;
+
+            if(returnNum > 0 && nextNode != nullptr) {
+                CentralCache::getInstance().returnRange(nextNode, returnNum * alignedSize, index);
+            }
+        }
     }
 
 }
