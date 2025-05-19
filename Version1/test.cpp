@@ -48,7 +48,7 @@ void BenchmarkMemoryPool(size_t ntimes, size_t nworks, size_t rounds) {
     for (auto& t:vthead) {
         t.join();
     }
-    printf("%lu line(s) work(s) %lu rounds, any rounds newElement&deleteElement %lu times,total cost %lu ms\n",nworks,rounds,ntimes,total_costtime);
+    printf("%lu line(s) work(s) %lu rounds, any rounds newElement & deleteElement %lu times,total cost %lu ms\n",nworks,rounds,ntimes,total_costtime);
 }
 
 void BenchmarkNew(size_t ntimes, size_t nworks, size_t rounds) {

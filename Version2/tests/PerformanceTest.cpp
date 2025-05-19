@@ -53,7 +53,7 @@ public:
         constexpr size_t SMALL_SIZE = 32;
 
         std::cout << "\nTesting small allocations...(" << NUM_ALLOCS
-                  << "allocations of" << SMALL_SIZE << "bytes):" <<std::endl;
+                  << " allocations of " << SMALL_SIZE << " bytes):" <<std::endl;
 
         {
             Timer t;
@@ -73,8 +73,8 @@ public:
                 MemoryPool::deallocate(ptr,SMALL_SIZE);
             }
 
-            std::cout << "Memory Pool:" << std::fixed << std::setprecision(3)
-                      << t.elapsed() << "ms" << std::endl;
+            std::cout << "Memory Pool: " << std::fixed << std::setprecision(3)
+                      << t.elapsed() << " ms" << std::endl;
         }
 
         {
@@ -105,8 +105,8 @@ public:
         constexpr size_t ALLOCS_PER_THREAD = 25000;
         constexpr size_t MAX_SIZE = 256;
 
-        std::cout<<"\nTesting multi-threaded allocations...("<< NUM_THREADS<< "threads, "
-                 << ALLOCS_PER_THREAD <<"allocations each):"<<std::endl;
+        std::cout<<"\nTesting multi-threaded allocations...("<< NUM_THREADS<< " threads, "
+                 << ALLOCS_PER_THREAD <<" allocations each):"<<std::endl;
 
         auto threadFunc = [](bool useMenPool) {
             std::random_device rd;
@@ -162,23 +162,23 @@ public:
             std::vector<std::thread> threads;
 
             for(size_t i = 0; i < NUM_THREADS; ++i) {
-                threads.emplace_back(threadFunc, true);
+                threads.emplace_back(threadFunc, false);
             }
 
             for(auto& thread : threads) {
                 thread.join();
             }
 
-            std::cout << "New/Delete:" << std::fixed << std::setprecision(3)
+            std::cout << "New/Delete: " << std::fixed << std::setprecision(3)
                       << t.elapsed() << " ms" << std::endl;
         }
     }
 
     static void testMixedSizes() {
         constexpr size_t NUM_ALLOCS = 50000;
-        constexpr size_t SIZES[] = {32, 64, 128, 256, 512, 1024, 2048};
+        constexpr size_t SIZES[] = {16, 32, 64, 128, 256, 512, 1024, 2048};
 
-        std::cout<<"\nTesting mixed-sized allocations...("<<NUM_ALLOCS<<"allocations):"<<std::endl;
+        std::cout<<"\nTesting mixed-sized allocations...("<<NUM_ALLOCS<<" allocations):"<<std::endl;
 
         {
             Timer t;
@@ -203,7 +203,7 @@ public:
                 MemoryPool::deallocate(ptr,size);
             }
 
-            std::cout << "Memory Pool:" << std::fixed << std::setprecision(3)
+            std::cout << "Memory Pool: " << std::fixed << std::setprecision(3)
                       << t.elapsed() << " ms" << std::endl;
         }
 
@@ -242,7 +242,7 @@ int main() {
     PerformanceTest::warmup();
 
     PerformanceTest::testSmallAllocation();
-    PerformanceTest::testMixedSizes();
+    PerformanceTest::testMultiThreaded();
     PerformanceTest::testMixedSizes();
 
     return 0;

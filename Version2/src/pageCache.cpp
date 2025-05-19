@@ -49,7 +49,7 @@ namespace memoryPool {
         std::lock_guard<std::mutex> lock(mutex_);
 
         auto it=spanMap_.find(ptr);
-        if(it!=spanMap_.end()) return;
+        if(it == spanMap_.end()) return;
 
         Span* span=it->second;
 

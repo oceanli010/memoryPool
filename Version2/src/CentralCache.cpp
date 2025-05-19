@@ -19,7 +19,7 @@ namespace memoryPool {
 
             if(!result) {
                 size_t size = (index + 1) * ALIGNMENT;
-                result = fetchRange(size);
+                result = fetchFromPageCache(size);
 
                 if(!result) {
                     locks_[index].clear(std::memory_order_release);
@@ -70,7 +70,7 @@ namespace memoryPool {
             void* end = start;
             size_t count = 1;
             while(*reinterpret_cast<void**>(end)!=nullptr && count<size) {
-                end = fetchRange(count);
+                end = *reinterpret_cast<void**>(end);
                 count++;
             }
 
