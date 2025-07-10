@@ -1,0 +1,8 @@
+# ninja log v6
+145	1157	7692606858043210	CMakeFiles/Version2.dir/src/ThreadCache.cpp.obj	5bc0b137ebf3eae2
+25	2753	7693365637401991	CMakeFiles/Version2.dir/tests/PerformanceTest.cpp.obj	e8a7fd44877253a
+24	1580	7692606856827303	CMakeFiles/Version2.dir/src/CentralCache.cpp.obj	a36a4fb6131dc865
+109	3955	7692606857679588	CMakeFiles/Version2.dir/src/pageCache.cpp.obj	524ac06dbab5d2db
+27	1483	7709976752100059	build.ninja	c4742057d2c5a85
+2755	3555	7693365664690698	Version2.exe	a58d5466bc7eeaf5
+22	2553	7693359126498327	CMakeFiles/Version2.dir/tests/UnitTest.cpp.obj	128f1a79b286e6fb

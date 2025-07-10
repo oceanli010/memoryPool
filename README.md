@@ -68,4 +68,40 @@
 使用`mutexForFreeList`保证操作原子性
 
 
+## Version2
+**文件结构**<br/>
+```
+----include
+  |--CentralCache.h
+  |--common.h
+  |--memoryPool.h
+  |--pageCache.h
+  |--ThreadCache.h
+----src
+  |--CentralCache.cpp
+  |--pageCache.cpp
+  |--ThreadCache.cpp
+----tests
+  |--PerformanceTest.cpp
+  |--UintTest.cpp
+```
+本项目实现了一个高效的内存池，旨在优化内存的分配和释放性能，尤其是多线程环境下<br/>
+这个版本的的内存池采用三级缓存架构对内存进行管理，主要包括以下层级：
+- ThreadCache 线程本地缓存<br/>
+该缓存为每个线程独立的缓存，采用无锁操作
+- CentralCache 中心缓存<br>
+管理多个线程共用的内存块，通过自旋锁确保线程安全
+- PageCache 页缓存<br/>
+从操作系统获取大块内存并进行分割，供上一层级使用
+<br/>
+
+**`ThreadCache` 线程本地缓存**<br/>
+该部分用于实现每个线程独享的本地缓存并快速分配小内存块(<=256KB)，实现原理为维护一个自由链表数组`freeList`，每个索引对应特定大小的内存块。通过该链表记录每种大小块的数量<br/>
+当本地缓存不足时，批量从`CentralCache`获取内存块；当剩余内存块过多时，也会批量返回给`CentralCache`<br/>
+
+**`CentralCache` 中心缓存**<br/>
+该部分通过细粒度锁协调多个线程的内存请求，每个索引都对应一个自由链表和一个自旋锁。当`ThreadCache`请求内存时，从对应的自由链表中进行分配。
+
+
+
 

@@ -1,0 +1,4 @@
+C:\jetbrains\CLion\bin\cmake\win\x64\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=C:/jetbrains/CLion/bin/ninja/win/x64/ninja.exe -G Ninja -S C:\Code\clion\memoryPool\Version2 -B C:\Code\clion\memoryPool\Version2\cmake-build-debug
+-- Configuring done (1.4s)
+-- Generating done (0.0s)
+-- Build files have been written to: C:/Code/clion/memoryPool/Version2/cmake-build-debug

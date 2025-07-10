@@ -1,0 +1,3 @@
+C:/Code/clion/memoryPool/Version2/cmake-build-debug/CMakeFiles/Version2.dir
+C:/Code/clion/memoryPool/Version2/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Code/clion/memoryPool/Version2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
